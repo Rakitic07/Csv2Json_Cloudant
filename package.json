@@ -1,0 +1,19 @@
+{
+  "name": "csv2json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "csv2json.js",
+  "scripts": {
+    "start": "csv2json.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "6.x"
+  },
+  "dependencies": {
+    "cloudant": "^1.8.0",
+    "express": "^4.15.4",
+    "fs": "0.0.1-security"
+  }
+}
