@@ -43,11 +43,14 @@ csvfile.forEach(function(part) {
     }
     jsonarray.push(temp);
 });
+
 //var x = JSON.stringify(jsonarray)
-var a;
-a = cloudant.db.use('testdb');
-  	a.insert({jsonarray},
-	 function(err, body) {
-	    	if(err)
-	    			return console.log(err);
-	 });
+var a = cloudant.db.use('testdb');
+a.insert({jsonarray},
+function(err, body) {
+if(err)
+    return console.log(err);
+});
+
+
+
