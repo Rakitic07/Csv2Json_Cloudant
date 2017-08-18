@@ -1,9 +1,4 @@
-var express = require('express');
-var app = express();
 var fs = require('fs');
-
-app.listen(8765);
-
 var cloudant = require('cloudant');
 
 function getDBCredentialsUrl(jsonData) {
