@@ -18,7 +18,7 @@ function initDBConnection() {
     } else { 
         dbCredentials = getDBCredentialsUrl(fs.readFileSync("myJASON.json", "utf-8")); 
         return dbCredentials;
-    }
+    } 
 };
 
 var cred = initDBConnection();
@@ -36,21 +36,25 @@ var column_header = csvfile.shift().split(",");
 
 var jsonarray = [];
 csvfile.forEach(function(part) {
+    var a = cloudant.db.use('my_sample_db');
     temp = {}
     row = part.split(",")
     for(var i = 0; i < column_header.length; i++) {
         temp[column_header[i]] = row[i];
     }
     jsonarray.push(temp);
+    
+    a.insert({jsonarray},
+        function(err, body) {
+            if(err)
+                return console.log(err);
+    });
+    jsonarray = [];
 });
 
 //var x = JSON.stringify(jsonarray)
-var a = cloudant.db.use('testdb');
-a.insert({jsonarray},
-function(err, body) {
-if(err)
-    return console.log(err);
-});
+
+
 
 
 
